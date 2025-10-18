@@ -11,12 +11,15 @@ public class TestProduct {
 
         ProductDatabase db = new ProductDatabase("product/Product.txt");
         db.readFromFile();
-
+        String newID="P6";
+        if (db.isIdUsed(newID)) {
+            System.out.println("❌ ID already exists. Please choose another one.");
+            System.exit(0);
+        }
+        Product newProd = new Product(newID, "EarBuds","Huawei","TechSupplier",5,500);
+        db.insertRecord(newProd);
         products=db.returnAllRecords();
         System.out.println(products);
-
-        db.insertRecord(db.createRecordFrom("P7,Tablet,Samsung,TechSupplier,5,1000"));
-        db.saveToFile();
 
         System.out.println(db.getRecord("P1"));
 
@@ -27,8 +30,7 @@ public class TestProduct {
             System.out.println(e.lineRepresentation());
         }
 
-        Product newProd = new Product("P5","EarBuds","Huawei","TechSupplier",5,500);
-        db.insertRecord(newProd);
+
 
         db.saveToFile();
 

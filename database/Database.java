@@ -1,4 +1,6 @@
 package database;
+import product.Product;
+
 import java.io.*;
 import java.util.*;
 
@@ -66,4 +68,13 @@ public abstract class Database<T extends Record> { // di ya3ny any class hy exte
             System.out.println("Error saving to file: " + fileName);
         }
     }
+    public boolean isIdUsed(String id) {
+        for (T p : records) {
+            if (p.getSearchKey().equalsIgnoreCase(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

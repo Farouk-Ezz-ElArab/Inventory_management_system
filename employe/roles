@@ -1,0 +1,77 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatte;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+public class EmployeeRole{
+private final ProductDatabase productsDatabase;
+private final CustomerProductDatabase customerProductDatabase;
+private static final String PRODUCTS_FILE = "Products.txt";
+private static final String CUST_PROD_FILE = "CustomersProducts.txt";
+private static final DateTimeFormatter KEY_FMT=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+public EmployeeRole() {
+this.productsDatabase = new ProductDatabase(PRODUCTS_FILE);
+this.customerProductDatabase=new CustomerProductDatabase(CUST_PROD_FILE);
+this.productsDatabase.readFromFile();
+        this.customerProductDatabase.readFromFile();}
+public void addProduct(String productID, String productName,String manufacturerName,String supplierName,int quantity) {
+if (!productsDatabase.contains(productID)) {
+Product p=new Product(productID, productName, manufacturerName, supplierName, quantity, 0.0f);
+productsDatabase.insertRecord(p);
+productsDatabase.saveToFile();
+}}
+public Product[] getListOfProducts() {
+ArrayList<Product> list=productsDatabase.returnAllRecords();
+return list.toArray(new Product[0]);}
+public CustomerProduct[] getListOfPurchasingOperations() {
+ArrayList<CustomerProduct> list = customerProductDatabase.returnAllRecords();
+return list.toArray(new CustomerProduct[0]);
+    }
+public boolean purchaseProduct(String customerSSN,String productID, LocalDate purchaseDate) {
+if (!productsDatabase.contains(productID)) {
+return false;}
+Product p = productsDatabase.getRecord(productID);
+if (p==null||p.getQuantity()<= 0) {
+return false;}
+p.setQuantity(p.getQuantity() - 1);
+productsDatabase.saveToFile();
+CustomerProduct cp=new CustomerProduct(customerSSN, productID, purchaseDate);
+cp.setPaid(false);
+customerProductDatabase.insertRecord(cp);
+customerProductDatabase.saveToFile();
+return true;
+}
+public double returnProduct(String customerSSN,String productID, LocalDate purchaseDate,LocalDate returnDate) {
+if(returnDate.isBefore(purchaseDate)) {
+return -1; }
+if (!productsDatabase.contains(productID)) {
+return -1;}
+String key = customerSSN + "," + productID + "," + purchaseDate.format(KEY_FMT);
+if (!customerProductDatabase.contains(key)) {
+return -1;}
+long days = ChronoUnit.DAYS.between(purchaseDate, returnDate);
+if (days > 14) {
+return -1;
+}
+Product p = productsDatabase.getRecord(productID);
+if (p == null) {
+return -1;}
+p.setQuantity(p.getQuantity() + 1);
+productsDatabase.saveToFile();
+customerProductDatabase.deleteRecord(key);
+customerProductDatabase.saveToFile();
+return p.getPrice();}
+public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
+ArrayList<CustomerProduct> all= customerProductDatabase.returnAllRecords();
+for (CustomerProduct cp : all) {
+if (cp.getCustomerSSN().equals(customerSSN)
+&& cp.getPurchaseDate().equals(purchaseDate)
+&& !cp.isPaid()) {
+cp.setPaid(true);
+customerProductDatabase.saveToFile();
+return true;}}
+return false;}
+public void logout() {
+productsDatabase.saveToFile();
+customerProductDatabase.saveToFile();
+}
+}

@@ -68,7 +68,7 @@ public class MainMenuFunctions {
     public static void addProduct(EmployeeRoles emp)
     {
         Scanner scan = new Scanner(System.in);
-        String ID = Generator.generateEmployeeRandomId();
+        String ID = Generator.generateProductRandomId();
 
         System.out.println("Adding product to database: ");
         System.out.print("\nEnter the Product's Name: ");

@@ -91,6 +91,12 @@ public class MainMenuFunctions {
         emp.addProduct(ID , Name, maker , supplier, quantity);
 
     }
+    public static void getListOfProducts(EmployeeRoles employeeRole){
+        Product[] list = employeeRole.getListOfProducts();
+        for(int i = 0; i < list.length; i++){
+            System.out.println(list[i].lineRepresentation());
+        }
+    }
     
     public static void getListOfPurchasingOperations(EmployeeRoles employeeRole){
         CustomerProduct [] list = employeeRole.getListOfPurchasingOperations();

@@ -8,3 +8,4 @@ P7,Tablet,Samsung,TechSupplier,5,1000.0
 P7,Tablet,Samsung,TechSupplier,5,1000.0
 P7,Tablet,Samsung,TechSupplier,5,1000.0
 P111,iPhone,Apple,TechSupplier,106,1100.0
+E1498,banana,tree,farm,50,0.0

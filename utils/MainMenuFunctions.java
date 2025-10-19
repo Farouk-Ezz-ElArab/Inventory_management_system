@@ -14,8 +14,7 @@ import utils.Generator;
 import java.util.ArrayList;
 
 import static utils.Generator.generateEmployeeRandomId;
-import static utils.Validator.isValidEmail;
-import static utils.Validator.isValidPhoneNumber;
+import static utils.Validator.*;
 
 public class MainMenuFunctions {
 
@@ -26,7 +25,7 @@ public class MainMenuFunctions {
     {
         Scanner scan = new Scanner(System.in);
         
-        String ID = Generator.generateEmployeeRandomId();
+        String ID = Generator.generateProductRandomId();
 
         System.out.print("Enter the Employee's Name: ");
         String Name = scan.nextLine();
@@ -65,6 +64,32 @@ public class MainMenuFunctions {
         System.out.println(list[i].lineRepresentation());
        }
         
+    }
+    public static void addProduct(EmployeeRoles emp)
+    {
+        Scanner scan = new Scanner(System.in);
+        String ID = Generator.generateEmployeeRandomId();
+
+        System.out.println("Adding product to database: ");
+        System.out.print("\nEnter the Product's Name: ");
+        String Name = scan.nextLine();
+        isValidString(Name);
+
+        System.out.println("\nEnter product maker: ");
+        String maker = scan.nextLine();
+        isValidString(maker);
+
+        System.out.println("\nEnter product supplier: ");
+        String supplier = scan.nextLine();
+        isValidString(supplier);
+
+        System.out.println("\nEnter product quantity: ");
+        int quantity = scan.nextInt();
+        scan.nextLine();
+        isPositiveNumber(quantity);
+
+        emp.addProduct(ID , Name, maker , supplier, quantity);
+
     }
     
     public static void getListOfPurchasingOperations(EmployeeRoles employeeRole){

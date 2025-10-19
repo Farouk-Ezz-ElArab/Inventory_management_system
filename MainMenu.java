@@ -48,7 +48,7 @@ public class MainMenu {
 
             case 2:
                 clearScreen();
-                System.out.println("under construction...");
+                EmployeeMenu();
                 break;
 
             case 3:
@@ -130,9 +130,11 @@ public class MainMenu {
             case 1:
                 clearScreen();
 
+
                 break;
             case 2:
                 clearScreen();
+
 
                 break;
             case 3:

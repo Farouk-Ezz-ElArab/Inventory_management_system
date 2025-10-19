@@ -82,6 +82,7 @@ public class MainMenu {
             case 1:
                 clearScreen();
                 MainMenuFunctions.AddEmployee(admin);
+
                 adminMenu();
                 // adding new employee
                 break;

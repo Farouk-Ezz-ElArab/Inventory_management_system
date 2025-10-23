@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import utils.Validator;
 
-public class EmployeeRoles {
+public class EmployeeRole {
 
     final String RESET = "\u001B[0m";
     final String RED = "\u001B[31m";
@@ -21,7 +21,7 @@ public class EmployeeRoles {
     private final ProductDatabase productsDb;
     private final CustomerProductDatabase custProdDb;
 
-    public EmployeeRoles() {
+    public EmployeeRole() {
         //E:\\OneDrive\\Desktop\\Programing\\Cursor\\Labs\\Lab4\\inventory\\Inventory_management_system\\product\\Product.txt
         //product/Product.txt
         //E:\\OneDrive\\Desktop\\Programing\\Cursor\\Labs\\Lab4\\inventory\\Inventory_management_system\\customer_product\\CustomerProduct.txt

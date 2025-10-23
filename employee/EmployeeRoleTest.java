@@ -10,7 +10,7 @@ public class EmployeeRoleTest {
 
 
 
-        EmployeeRoles emp = new EmployeeRoles();
+        EmployeeRole emp = new EmployeeRole();
         emp.addProduct("P141", "iPhone14", "Apple", "TechSupplier", 100);
 
        /* 

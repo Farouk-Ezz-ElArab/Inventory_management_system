@@ -104,7 +104,7 @@ public class MainMenu {
 
     public static void EmployeeMenu(){
         clearScreen();
-        EmployeeRoles employee = new EmployeeRoles();
+        EmployeeRole employee = new EmployeeRole();
         System.out.println(BLUE + "================= Inventory Management System =================" + RESET);
         System.out.println(GREEN + "1. Add Product " + RESET);
         System.out.println(GREEN + "2. Get List Of Products" + RESET);

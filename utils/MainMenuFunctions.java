@@ -108,7 +108,7 @@ public class MainMenuFunctions {
 
     //Employee Functions
 
-    public static void addProduct(EmployeeRoles emp)
+    public static void addProduct(EmployeeRole emp)
     {
         Scanner scan = new Scanner(System.in);
         String ID = Generator.generateProductRandomId();
@@ -163,7 +163,7 @@ public class MainMenuFunctions {
     }
 
 
-    public static void getListOfProducts(EmployeeRoles employeeRole){
+    public static void getListOfProducts(EmployeeRole employeeRole){
         Product[] list = employeeRole.getListOfProducts();
         for(int i = 0; i < list.length; i++){
             System.out.println(list[i].lineRepresentation());
@@ -177,7 +177,7 @@ public class MainMenuFunctions {
 
 
 
-    public static void getListOfPurchasingOperations(EmployeeRoles employeeRole){
+    public static void getListOfPurchasingOperations(EmployeeRole employeeRole){
 
         CustomerProduct [] list = employeeRole.getListOfPurchasingOperations();
         for(int i = 0; i < list.length; i++){
@@ -189,7 +189,7 @@ public class MainMenuFunctions {
 
     }
 
-    public static void purchaseProduct(EmployeeRoles employeeRole){
+    public static void purchaseProduct(EmployeeRole employeeRole){
         Scanner scanner = new Scanner(System.in);
         
         String SSN = generateCustomerRandomId();
@@ -206,7 +206,7 @@ public class MainMenuFunctions {
 
 
 
-    public static void returnProduct(EmployeeRoles Emp)
+    public static void returnProduct(EmployeeRole Emp)
     {
 
         Scanner scan = new Scanner(System.in);
@@ -235,7 +235,7 @@ public class MainMenuFunctions {
     }
 
 
-    public static void applyPayment(EmployeeRoles Emp)
+    public static void applyPayment(EmployeeRole Emp)
     {
         Scanner scan = new Scanner(System.in);
 

@@ -105,7 +105,7 @@ public class EmployeeRoles {
         Product p = productsDb.getRecord(productID);
         if (p == null) {
             System.out.println(RED+ "The Product with ID: " +productID+" Couldn't found....... "+ RESET);
-            return -2;
+            return -1;
         }
 
         
@@ -116,20 +116,14 @@ public class EmployeeRoles {
 
         if (target == null) {
             System.out.println(RED+ "This Purshasing operation Details Couldn't found: " + RESET + key);
-            return -3;
-        }
-
-        System.out.println(target.isPaid());
-        if (!target.isPaid()) {
-            System.out.println(RED + "This purchasing operation wasn't paid: " + RESET + key);
-            return -4;
+            return -1;
         }
         
         long days = ChronoUnit.DAYS.between(purchaseDate, returnDate);
         if (days > 14) {
             System.out.println(RED+ "Sorry the 14 DAYS Limit to return the product Has Already PASSED.......... " + RESET);
             System.out.println("The product was Purshased on: " + date);
-            return -5;
+            return -1;
         }
         
         p.setQuantity(p.getQuantity() + 1);
